@@ -3,6 +3,7 @@ package com.lambdaschool.usermodel.repository;
 import com.lambdaschool.usermodel.models.User;
 import com.lambdaschool.usermodel.views.JustTheCount;
 import com.lambdaschool.usermodel.views.UserNameCountEmails;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,6 +16,9 @@ import java.util.List;
  */
 public interface UserRepository extends CrudRepository<User, Long>
 {
+
+    List<User> findByUsernameContainingIgnoreCase(String name, Pageable pageable);
+
     /**
      * Find a user based off over username
      *
