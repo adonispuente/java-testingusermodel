@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.data.domain.Pageable;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -93,9 +94,9 @@ public class UserController
         produces = {"application/json"})
     public ResponseEntity<?> getUserLikeName(
         @PathVariable
-            String userName)
+            String userName, Pageable pageable)
     {
-        List<User> u = userService.findByNameContaining(userName);
+        List<User> u = userService.findByNameContaining(userName, pageable);
         return new ResponseEntity<>(u,
             HttpStatus.OK);
     }

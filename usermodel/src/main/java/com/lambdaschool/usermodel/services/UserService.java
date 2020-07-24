@@ -2,6 +2,7 @@ package com.lambdaschool.usermodel.services;
 
 import com.lambdaschool.usermodel.models.User;
 import com.lambdaschool.usermodel.views.UserNameCountEmails;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -108,4 +109,7 @@ public interface UserService
      * @return List (element type is the interface UserNameCountEmails) containing usernames and the number of emails they have - not counting the primary email
      */
     List<UserNameCountEmails> getCountUserEmails();
+
+    List<User> findByNameContaining(String username, Pageable pageable);
+
 }
